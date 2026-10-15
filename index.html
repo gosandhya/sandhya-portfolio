@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandhya Gopchandani · AI, chai & community</title>
+  <meta name="description" content="Sandhya Gopchandani is a technical AI leader in Chicago. Book time to talk about adopting AI in your business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf6ef;
+      --surface: #f3e9dc;
+      --text: #2a1f17;
+      --muted: #6f5d4e;
+      --accent: #b5532a;
+      --accent-ink: #fff8f1;
+      --line: #e4d5c3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #17120e;
+        --surface: #221a14;
+        --text: #f4ebe1;
+        --muted: #b9a593;
+        --accent: #e58a5a;
+        --accent-ink: #1a120c;
+        --line: #3a2d22;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.6 Inter, system-ui, -apple-system, sans-serif;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+    .logo { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; font-size: 0.95rem; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.ghost { background: transparent; color: var(--text); border: 1.5px solid var(--line); }
+
+    header.hero { padding: 72px 0 88px; }
+    .eyebrow { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
+    h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.12; }
+    h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); margin: 14px 0 22px; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lede { font-size: 1.2rem; color: var(--muted); max-width: 36em; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 18px; }
+    .section-intro { color: var(--muted); max-width: 38em; margin-bottom: 36px; }
+
+    .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .card { background: var(--surface); border-radius: 20px; padding: 28px; }
+    .card .icon { font-size: 1.8rem; }
+    .card h3 { font-size: 1.3rem; margin: 12px 0 8px; }
+    .card p { color: var(--muted); font-size: .98rem; }
+
+    .steps { counter-reset: s; display: grid; gap: 14px; }
+    .step { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; }
+    .step::before {
+      counter-increment: s; content: counter(s);
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--accent); color: var(--accent-ink);
+      font-family: Fraunces, serif; font-weight: 700;
+    }
+    .step h3 { font-size: 1.15rem; margin-bottom: 2px; }
+    .step p { color: var(--muted); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .chip { border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 16px; font-size: .95rem; }
+
+    .book {
+      background: var(--accent); color: var(--accent-ink);
+      border-radius: 28px; padding: 56px 32px; text-align: center; margin: 72px 0;
+    }
+    .book h2 { margin-bottom: 12px; }
+    .book p { max-width: 32em; margin: 0 auto 28px; opacity: .9; }
+    .book .btn { background: var(--accent-ink); color: var(--accent); }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 560px) {
+      .nav-links a:not(.keep) { display: none; }
+      header.hero { padding: 40px 0 64px; }
+      .book { padding: 44px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">Sandhya G.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#help">How I help</a>
+        <a href="#life">Off the clock</a>
+        <a class="keep" href="#book">Book time</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Chicago · Technical AI leader</p>
+      <h1>Powered by <em>AI</em>,<br>chai &amp; community.</h1>
+      <p class="lede">I help teams cut through the AI noise and find the few places where it actually moves the needle — then build it with them, one cup of chai at a time.</p>
+      <div class="cta-row">
+        <a class="btn" href="#book">Book time with me</a>
+        <a class="btn ghost" href="#help">See how I help</a>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>Hi, I'm Sandhya 👋</h2>
+      <p class="section-intro">I'm a technical AI leader based in Chicago. I spend my days turning AI from a buzzword into working software, and my evenings running, travelling and building community. I believe the best AI projects start with a real problem and a good conversation, not a model.</p>
+      <div class="trio">
+        <div class="card">
+          <div class="icon">🤖</div>
+          <h3>AI</h3>
+          <p>Hands-on with modern AI: from picking the right use case to shipping it into real workflows.</p>
+        </div>
+        <div class="card">
+          <div class="icon">☕</div>
+          <h3>Chai</h3>
+          <p>Every good idea I've had started over a warm cup and an honest conversation. I'd love to have one with you.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Community</h3>
+          <p>I'm happiest bringing people together: to learn, share what works and lift each other up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="help">
+      <p class="eyebrow">For businesses</p>
+      <h2>Thinking about using AI? Let's figure it out together.</h2>
+      <p class="section-intro">Whether you're curious, stuck or ready to build, here's how a conversation with me usually goes.</p>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Chai chat</h3>
+            <p>A relaxed 30-minute call about your business, your goals and where AI might (or might not) help.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Find the real wins</h3>
+            <p>We pick one or two high-value, low-risk use cases instead of chasing every shiny tool.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Start small, ship fast</h3>
+            <p>A focused pilot your team can see, try and trust — with a clear plan for what comes next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="life">
+      <p class="eyebrow">Off the clock</p>
+      <h2>Running, roaming &amp; good company.</h2>
+      <p class="section-intro">When I'm not thinking about AI, I'm training for my next half marathon, planning the next trip or hanging out with my community in Chicago.</p>
+      <div class="chips">
+        <span class="chip">🏃‍♀️ Half marathon 2026</span>
+        <span class="chip">🏙️ Chicago</span>
+        <span class="chip">🗽 NYC</span>
+        <span class="chip">🏔️ Colorado</span>
+        <span class="chip">🏜️ Utah</span>
+        <span class="chip">🌴 Puerto Rico</span>
+        <span class="chip">🇬🇧 UK &amp; beyond</span>
+      </div>
+    </section>
+
+    <div class="book" id="book">
+      <h2>Let's grab a (virtual) chai.</h2>
+      <p>Want to use or adopt AI in your business but not sure where to start? Book time with me and let's talk it through.</p>
+      <a class="btn" href="https://www.linkedin.com/in/sandhya-gopchandani-04316b66/" target="_blank" rel="noopener">Book time with me →</a>
+    </div>
+
+    <footer>
+      <span>© 2026 Sandhya Gopchandani · Chicago</span>
+      <span>
+        <a href="https://www.linkedin.com/in/sandhya-gopchandani-04316b66/" target="_blank" rel="noopener">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.instagram.com/gosandhyag" target="_blank" rel="noopener">Instagram</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
