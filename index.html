@@ -3,202 +3,283 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
   <title>Sandhya Gopchandani · AI, chai & community</title>
   <meta name="description" content="Sandhya Gopchandani is a technical AI leader in Chicago. Book time to talk about adopting AI in your business.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fbf6ef;
-      --surface: #f3e9dc;
-      --text: #2a1f17;
-      --muted: #6f5d4e;
-      --accent: #b5532a;
-      --accent-ink: #fff8f1;
-      --line: #e4d5c3;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #17120e;
-        --surface: #221a14;
-        --text: #f4ebe1;
-        --muted: #b9a593;
-        --accent: #e58a5a;
-        --accent-ink: #1a120c;
-        --line: #3a2d22;
-      }
+      --ink: #111111;
+      --paper: #fffdf8;
+      --orange: #ff6a1a;
+      --soft: #ffe9dc;
+      --hand: "Caveat", cursive;
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font: 17px/1.6 Inter, system-ui, -apple-system, sans-serif;
+      background: var(--paper);
+      background-image: radial-gradient(#11111114 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
+      color: var(--ink);
+      font: 18px/1.6 var(--display);
+      overflow-x: hidden;
     }
     a { color: inherit; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+    .hand { font-family: var(--hand); }
+    .pop { color: var(--orange); }
+    svg.doodle { stroke: var(--ink); fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
-    .logo { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
-    .nav-links { display: flex; gap: 22px; font-size: 0.95rem; }
-    .nav-links a { text-decoration: none; color: var(--muted); }
-    .nav-links a:hover { color: var(--text); }
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; gap: 12px; }
+    .logo { font-family: var(--hand); font-size: 2rem; font-weight: 700; text-decoration: none; line-height: 1; }
+    .logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 24px; align-items: center; font-weight: 600; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:not(.btn):hover { text-decoration: underline wavy var(--orange); text-underline-offset: 6px; }
 
+    /* Buttons */
     .btn {
       display: inline-block;
-      background: var(--accent);
-      color: var(--accent-ink);
-      padding: 14px 26px;
-      border-radius: 999px;
-      font-weight: 600;
+      background: var(--orange);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 12px 24px;
+      font-weight: 800;
       text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover { transform: translate(-2px, -2px) rotate(-1deg); box-shadow: 7px 7px 0 var(--ink); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+    .btn.white { background: #fff; }
+    .btn.small { padding: 8px 16px; font-size: .95rem; box-shadow: 4px 4px 0 var(--ink); }
+
+    /* Hero */
+    header.hero { position: relative; padding: 56px 0 96px; }
+    .tag {
+      display: inline-block; background: #fff; border: 2.5px solid var(--ink); border-radius: 999px;
+      padding: 4px 16px; font-weight: 600; font-size: .95rem; transform: rotate(-2deg);
+    }
+    h1 {
+      font-weight: 800; letter-spacing: -0.03em;
+      font-size: clamp(3rem, 9vw, 6.4rem); line-height: .98; margin: 26px 0 26px;
+    }
+    .squiggle { position: relative; display: inline-block; color: var(--orange); }
+    .squiggle svg { position: absolute; left: -2%; bottom: -0.12em; width: 104%; height: .28em; stroke: var(--ink); }
+    .circled { position: relative; display: inline-block; padding: 0 .12em; }
+    .circled svg { position: absolute; inset: -18% -10%; width: 120%; height: 136%; stroke: var(--orange); stroke-width: 3.5; }
+    .lede { font-size: 1.25rem; max-width: 34em; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 36px; align-items: center; }
+    .note { font-family: var(--hand); font-size: 1.6rem; display: flex; align-items: center; gap: 6px; transform: rotate(-3deg); }
+    .note svg { width: 54px; height: 34px; }
+
+    .hero-doodles { position: absolute; inset: 0; pointer-events: none; }
+    .hero-doodles svg { position: absolute; }
+    .d-star { top: 40px; right: 6%; width: 64px; animation: wobble 4s ease-in-out infinite; }
+    .d-chai { bottom: 54px; right: 4%; width: 150px; }
+    .d-spark { top: 150px; right: 15%; width: 40px; animation: wobble 3s ease-in-out infinite reverse; }
+    @keyframes wobble { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) scale(1.08); } }
+
+    /* Ticker */
+    .ticker {
+      background: var(--ink); color: var(--paper); border-block: 3px solid var(--ink);
+      transform: rotate(-1.5deg); margin: 0 -20px; overflow: hidden; white-space: nowrap;
+    }
+    .ticker-track { display: inline-block; padding: 14px 0; font-weight: 800; font-size: 1.3rem; animation: scroll 26s linear infinite; }
+    .ticker-track span { margin: 0 18px; }
+    .ticker-track .pop { font-family: var(--hand); font-size: 1.7rem; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* Sections */
+    section { padding: 96px 0 24px; }
+    .kicker { font-family: var(--hand); font-size: 1.8rem; color: var(--orange); transform: rotate(-2deg); display: inline-block; }
+    h2 { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.05; margin: 6px 0 18px; }
+    .intro { max-width: 36em; font-size: 1.12rem; margin-bottom: 40px; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; }
+    .card {
+      background: #fff; border: 3px solid var(--ink); border-radius: 20px;
+      box-shadow: 7px 7px 0 var(--ink); padding: 28px;
       transition: transform .15s ease;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn.ghost { background: transparent; color: var(--text); border: 1.5px solid var(--line); }
+    .card:nth-child(1) { transform: rotate(-1.5deg); }
+    .card:nth-child(2) { transform: rotate(1deg); background: var(--orange); }
+    .card:nth-child(3) { transform: rotate(-.5deg); }
+    .card:hover { transform: rotate(0) translateY(-4px); }
+    .card svg { width: 64px; height: 64px; }
+    .card h3 { font-size: 1.6rem; font-weight: 800; margin: 12px 0 6px; }
 
-    header.hero { padding: 72px 0 88px; }
-    .eyebrow { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
-    h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.12; }
-    h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); margin: 14px 0 22px; }
-    h1 em { font-style: normal; color: var(--accent); }
-    .lede { font-size: 1.2rem; color: var(--muted); max-width: 36em; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-
-    section { padding: 72px 0; border-top: 1px solid var(--line); }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 18px; }
-    .section-intro { color: var(--muted); max-width: 38em; margin-bottom: 36px; }
-
-    .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-    .card { background: var(--surface); border-radius: 20px; padding: 28px; }
-    .card .icon { font-size: 1.8rem; }
-    .card h3 { font-size: 1.3rem; margin: 12px 0 8px; }
-    .card p { color: var(--muted); font-size: .98rem; }
-
-    .steps { counter-reset: s; display: grid; gap: 14px; }
-    .step { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; }
-    .step::before {
-      counter-increment: s; content: counter(s);
-      width: 44px; height: 44px; border-radius: 50%;
-      display: grid; place-items: center;
-      background: var(--accent); color: var(--accent-ink);
-      font-family: Fraunces, serif; font-weight: 700;
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; position: relative; }
+    .step { position: relative; padding: 26px 24px 24px; border: 3px dashed var(--ink); border-radius: 22px; background: var(--paper); }
+    .step .num {
+      position: absolute; top: -26px; left: 18px; width: 52px; height: 52px; border-radius: 50%;
+      background: var(--orange); border: 3px solid var(--ink); display: grid; place-items: center;
+      font-family: var(--hand); font-size: 2rem; font-weight: 700; line-height: 1;
     }
-    .step h3 { font-size: 1.15rem; margin-bottom: 2px; }
-    .step p { color: var(--muted); }
+    .step h3 { font-size: 1.4rem; font-weight: 800; margin: 14px 0 6px; }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-    .chip { border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 16px; font-size: .95rem; }
+    /* Off the clock */
+    .stickers { display: flex; flex-wrap: wrap; gap: 14px; }
+    .sticker {
+      background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 8px 18px;
+      font-weight: 600; box-shadow: 4px 4px 0 var(--ink);
+    }
+    .sticker:nth-child(odd) { transform: rotate(-2deg); }
+    .sticker:nth-child(even) { transform: rotate(2deg); }
+    .sticker.hot { background: var(--orange); }
 
+    /* Book */
     .book {
-      background: var(--accent); color: var(--accent-ink);
-      border-radius: 28px; padding: 56px 32px; text-align: center; margin: 72px 0;
+      position: relative; margin: 110px 0 60px; padding: 64px 28px; text-align: center;
+      background: var(--ink); color: var(--paper); border-radius: 30px;
+      box-shadow: 10px 10px 0 var(--orange);
     }
-    .book h2 { margin-bottom: 12px; }
-    .book p { max-width: 32em; margin: 0 auto 28px; opacity: .9; }
-    .book .btn { background: var(--accent-ink); color: var(--accent); }
+    .book h2 { color: var(--paper); }
+    .book p { max-width: 30em; margin: 0 auto 32px; font-size: 1.15rem; }
+    .book .btn { border-color: var(--paper); box-shadow: 5px 5px 0 var(--paper); }
+    .book .btn:hover { box-shadow: 7px 7px 0 var(--paper); }
+    .book .d-cup { position: absolute; top: -56px; left: 50%; transform: translateX(-50%) rotate(-6deg); width: 104px; background: var(--paper); border-radius: 50%; padding: 12px; border: 3px solid var(--ink); }
+    .book .hand-note { font-family: var(--hand); font-size: 1.7rem; color: var(--orange); margin-top: 18px; display: block; }
 
-    footer { padding: 32px 0 48px; color: var(--muted); font-size: .9rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-    footer a { text-decoration: none; }
-    footer a:hover { color: var(--text); }
+    footer { padding: 20px 0 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-weight: 600; }
+    footer a { text-decoration: underline wavy var(--orange); text-underline-offset: 5px; }
 
-    @media (max-width: 560px) {
-      .nav-links a:not(.keep) { display: none; }
-      header.hero { padding: 40px 0 64px; }
-      .book { padding: 44px 20px; }
+    @media (max-width: 640px) {
+      .nav-links a:not(.btn) { display: none; }
+      header.hero { padding: 32px 0 80px; }
+      .d-chai { width: 96px; bottom: 6px; right: 0; opacity: .9; }
+      .d-spark { display: none; }
+      .d-star { width: 44px; top: 0; }
+      .book { padding: 72px 18px 48px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <nav>
-      <a class="logo" href="#">Sandhya G.</a>
+      <a class="logo" href="#">sandhya<span>.</span></a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#help">How I help</a>
         <a href="#life">Off the clock</a>
-        <a class="keep" href="#book">Book time</a>
+        <a class="btn small" href="#book">Book time</a>
       </div>
     </nav>
 
     <header class="hero">
-      <p class="eyebrow">Chicago · Technical AI leader</p>
-      <h1>Powered by <em>AI</em>,<br>chai &amp; community.</h1>
-      <p class="lede">I help teams cut through the AI noise and find the few places where it actually moves the needle — then build it with them, one cup of chai at a time.</p>
+      <div class="hero-doodles" aria-hidden="true">
+        <svg class="doodle d-star" viewBox="0 0 64 64"><path d="M32 4 L38 24 L58 26 L42 38 L48 58 L32 46 L16 58 L22 38 L6 26 L26 24 Z" fill="#ff6a1a"/></svg>
+        <svg class="doodle d-spark" viewBox="0 0 40 40"><path d="M20 2v12M20 26v12M2 20h12M26 20h12M8 8l6 6M26 26l6 6M32 8l-6 6M14 26l-6 6"/></svg>
+        <svg class="doodle d-chai" viewBox="0 0 150 150">
+          <path d="M58 30c-6-8 6-12 0-22M78 30c-6-8 6-12 0-22M98 30c-6-8 6-12 0-22"/>
+          <path d="M30 48h96l-10 72c-1 8-8 14-16 14H56c-8 0-15-6-16-14z" fill="#fff"/>
+          <path d="M34 66h88" stroke="#ff6a1a" stroke-width="6"/>
+          <path d="M124 64c18 0 18 30-4 30"/>
+          <path d="M20 140h116"/>
+        </svg>
+      </div>
+
+      <span class="tag">📍 Chicago · Technical AI leader</span>
+      <h1>
+        Powered by
+        <span class="circled">AI<svg class="doodle" viewBox="0 0 120 70" preserveAspectRatio="none"><path d="M10 38C8 14 52 4 84 8s34 30 18 44S30 70 14 52C6 42 18 24 40 18"/></svg></span>,<br>
+        chai &amp; <span class="squiggle">community.<svg class="doodle" viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M3 12c20-10 30 8 50 0s30-10 50 0 30 8 50 0 30-10 50 0 30 8 50 0 30-6 44-2"/></svg></span>
+      </h1>
+      <p class="lede">I help teams cut through the AI noise, find the few places where it actually moves the needle, and build it with them. One cup of chai at a time.</p>
       <div class="cta-row">
-        <a class="btn" href="#book">Book time with me</a>
-        <a class="btn ghost" href="#help">See how I help</a>
+        <a class="btn" href="#book">Book time with me →</a>
+        <span class="note">psst, start here
+          <svg class="doodle" viewBox="0 0 54 34"><path d="M50 6C34 4 18 12 8 26M8 26l1-12M8 26l12-2"/></svg>
+        </span>
       </div>
     </header>
+  </div>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>AI strategy</span><span class="pop">✦</span><span>Chai chats</span><span class="pop">✦</span><span>Community</span><span class="pop">✦</span><span>Start small, ship fast</span><span class="pop">✦</span><span>Running</span><span class="pop">✦</span><span>Chicago</span><span class="pop">✦</span>
+      <span>AI strategy</span><span class="pop">✦</span><span>Chai chats</span><span class="pop">✦</span><span>Community</span><span class="pop">✦</span><span>Start small, ship fast</span><span class="pop">✦</span><span>Running</span><span class="pop">✦</span><span>Chicago</span><span class="pop">✦</span>
+    </div>
+  </div>
+
+  <div class="wrap">
     <section id="about">
-      <h2>Hi, I'm Sandhya 👋</h2>
-      <p class="section-intro">I'm a technical AI leader based in Chicago. I spend my days turning AI from a buzzword into working software, and my evenings running, travelling and building community. I believe the best AI projects start with a real problem and a good conversation, not a model.</p>
-      <div class="trio">
+      <span class="kicker">hi, I'm Sandhya 👋</span>
+      <h2>I make AI feel less like magic<br>and more like <span class="pop">a plan.</span></h2>
+      <p class="intro">I'm a technical AI leader based in Chicago. I spend my days turning AI from a buzzword into working software, and my evenings running, travelling and building community. The best AI projects start with a real problem and a good conversation, not a model.</p>
+      <div class="cards">
         <div class="card">
-          <div class="icon">🤖</div>
+          <svg class="doodle" viewBox="0 0 64 64"><rect x="12" y="18" width="40" height="32" rx="8" fill="#fff"/><path d="M32 18v-8"/><circle cx="32" cy="8" r="3" fill="#ff6a1a"/><circle cx="24" cy="32" r="3" fill="#111"/><circle cx="40" cy="32" r="3" fill="#111"/><path d="M25 41c4 3 10 3 14 0"/><path d="M12 34H6M58 34h-6"/></svg>
           <h3>AI</h3>
-          <p>Hands-on with modern AI: from picking the right use case to shipping it into real workflows.</p>
+          <p>Hands-on with modern AI, from picking the right use case to shipping it into real workflows.</p>
         </div>
         <div class="card">
-          <div class="icon">☕</div>
+          <svg class="doodle" viewBox="0 0 64 64"><path d="M24 14c-3-4 3-6 0-10M34 14c-3-4 3-6 0-10"/><path d="M12 22h40l-4 30c-1 4-4 6-8 6H24c-4 0-7-2-8-6z" fill="#fff"/><path d="M50 26c10 0 10 16-2 16"/></svg>
           <h3>Chai</h3>
           <p>Every good idea I've had started over a warm cup and an honest conversation. I'd love to have one with you.</p>
         </div>
         <div class="card">
-          <div class="icon">🤝</div>
+          <svg class="doodle" viewBox="0 0 64 64"><circle cx="20" cy="22" r="8" fill="#fff"/><circle cx="44" cy="22" r="8" fill="#ff6a1a"/><path d="M6 52c0-10 6-16 14-16s14 6 14 16M30 52c0-10 6-16 14-16s14 6 14 16"/></svg>
           <h3>Community</h3>
-          <p>I'm happiest bringing people together: to learn, share what works and lift each other up.</p>
+          <p>I'm happiest bringing people together to learn, share what works and lift each other up.</p>
         </div>
       </div>
     </section>
 
     <section id="help">
-      <p class="eyebrow">For businesses</p>
-      <h2>Thinking about using AI? Let's figure it out together.</h2>
-      <p class="section-intro">Whether you're curious, stuck or ready to build, here's how a conversation with me usually goes.</p>
+      <span class="kicker">for businesses</span>
+      <h2>Thinking about AI?<br>Let's figure it out <span class="pop">together.</span></h2>
+      <p class="intro">Whether you're curious, stuck or ready to build, here's how working with me usually goes.</p>
       <div class="steps">
         <div class="step">
-          <div>
-            <h3>Chai chat</h3>
-            <p>A relaxed 30-minute call about your business, your goals and where AI might (or might not) help.</p>
-          </div>
+          <span class="num">1</span>
+          <h3>Chai chat ☕</h3>
+          <p>A relaxed 30-minute call about your business, your goals and where AI might (or might not) help.</p>
         </div>
         <div class="step">
-          <div>
-            <h3>Find the real wins</h3>
-            <p>We pick one or two high-value, low-risk use cases instead of chasing every shiny tool.</p>
-          </div>
+          <span class="num">2</span>
+          <h3>Find the real wins 🎯</h3>
+          <p>We pick one or two high-value, low-risk use cases instead of chasing every shiny tool.</p>
         </div>
         <div class="step">
-          <div>
-            <h3>Start small, ship fast</h3>
-            <p>A focused pilot your team can see, try and trust — with a clear plan for what comes next.</p>
-          </div>
+          <span class="num">3</span>
+          <h3>Start small, ship fast 🚀</h3>
+          <p>A focused pilot your team can see, try and trust, with a clear plan for what comes next.</p>
         </div>
       </div>
     </section>
 
     <section id="life">
-      <p class="eyebrow">Off the clock</p>
-      <h2>Running, roaming &amp; good company.</h2>
-      <p class="section-intro">When I'm not thinking about AI, I'm training for my next half marathon, planning the next trip or hanging out with my community in Chicago.</p>
-      <div class="chips">
-        <span class="chip">🏃‍♀️ Half marathon 2026</span>
-        <span class="chip">🏙️ Chicago</span>
-        <span class="chip">🗽 NYC</span>
-        <span class="chip">🏔️ Colorado</span>
-        <span class="chip">🏜️ Utah</span>
-        <span class="chip">🌴 Puerto Rico</span>
-        <span class="chip">🇬🇧 UK &amp; beyond</span>
+      <span class="kicker">off the clock</span>
+      <h2>Running, roaming<br>&amp; good company.</h2>
+      <p class="intro">When I'm not thinking about AI, I'm training for my next half marathon, planning the next trip or hanging out with my community in Chicago.</p>
+      <div class="stickers">
+        <span class="sticker hot">🏃‍♀️ Half marathon 2026</span>
+        <span class="sticker">🏙️ Chicago</span>
+        <span class="sticker">🗽 NYC</span>
+        <span class="sticker">🏔️ Colorado</span>
+        <span class="sticker hot">🏜️ Utah</span>
+        <span class="sticker">🌴 Puerto Rico</span>
+        <span class="sticker">🇬🇧 UK &amp; beyond</span>
       </div>
     </section>
 
     <div class="book" id="book">
-      <h2>Let's grab a (virtual) chai.</h2>
+      <svg class="doodle d-cup" viewBox="0 0 64 64" aria-hidden="true"><path d="M24 14c-3-4 3-6 0-10M34 14c-3-4 3-6 0-10"/><path d="M12 22h40l-4 30c-1 4-4 6-8 6H24c-4 0-7-2-8-6z" fill="#ff6a1a"/><path d="M50 26c10 0 10 16-2 16"/></svg>
+      <h2>Let's grab a<br>(virtual) chai.</h2>
       <p>Want to use or adopt AI in your business but not sure where to start? Book time with me and let's talk it through.</p>
       <a class="btn" href="https://www.linkedin.com/in/sandhya-gopchandani-04316b66/" target="_blank" rel="noopener">Book time with me →</a>
+      <span class="hand-note">no jargon, promise ✌️</span>
     </div>
 
     <footer>
